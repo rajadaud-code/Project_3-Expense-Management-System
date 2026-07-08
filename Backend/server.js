@@ -39,6 +39,10 @@ app.use("/api/budgets", budgetRoutes); // Mount budget routes under /api/budgets
 app.use("/api/dashboard", dashboardRoutes); // Mount dashboard routes under /api/dashboard
 app.use("/api/insights", insightRoutes);
 
-app.listen(Port, () => {
-  console.log(`Server is running on port ${Port}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  app.listen(Port, () => {
+    console.log(`Server is running on port ${Port}`);
+  });
+}
+
+export default app;
